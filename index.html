@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>يا مطي - النسخة الكاملة</title>
+    <!-- استدعاء Tailwind CSS وخطوط جوجل -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -14,6 +14,7 @@
             margin: 0;
             padding: 0;
             user-select: none;
+            background: #1e1b4b; /* fallback color */
         }
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
@@ -60,14 +61,14 @@
 </head>
 <body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen flex items-center justify-center relative">
     
-    <!-- Background Texture -->
+    <!-- خلفية زخرفية -->
     <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
 
-    <!-- Rain and Emoji Containers -->
+    <!-- حاويات المطر والرموز -->
     <div id="rain-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
     <div id="emoji-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
 
-    <!-- Main Content -->
+    <!-- المحتوى الرئيسي -->
     <div class="z-20 glass-card rounded-[2.5rem] p-8 md:p-16 text-center flex flex-col items-center gap-8 max-w-xl w-full transform transition-all duration-700">
         <div class="flex gap-6 mb-2">
             <span class="text-8xl md:text-9xl animate-bounce drop-shadow-2xl" style="animation-delay: 0s">🫏</span>
@@ -84,7 +85,7 @@
             أنت الآن في منطقة المطايا 🚧
         </p>
 
-        <!-- The Prank Button Container -->
+        <!-- زر المقلب -->
         <div class="relative h-32 w-full flex items-center justify-center">
             <button
                 id="exit-btn"
@@ -118,11 +119,11 @@
 
         let count = 0;
 
-        // Configuration
+        // إعدادات الرموز والألوان
         const bgEmojis = ['😂', '🫏', '🤣', '🐴', '✨', '🔥', '🤪', '🤡'];
         const colors = ['#ffffff', '#fffbeb', '#fef3c7', '#fde68a', '#fcd34d'];
 
-        // Create Mati Rain
+        // إنشاء مطر "مطي"
         for (let i = 0; i < 50; i++) {
             const drop = document.createElement('div');
             drop.className = 'mati-rain animate-fall';
@@ -146,7 +147,7 @@
             rainContainer.appendChild(drop);
         }
 
-        // Create Floating Emojis
+        // إنشاء رموز عائمة في الخلفية
         for (let i = 0; i < 20; i++) {
             const emoji = document.createElement('div');
             emoji.className = 'emoji-bg animate-float';
@@ -160,7 +161,7 @@
             emojiContainer.appendChild(emoji);
         }
 
-        // Button Escape Logic
+        // منطق هروب الزر
         function escape() {
             const range = window.innerWidth < 640 ? 150 : 250;
             const newX = (Math.random() - 0.5) * range * 2;
